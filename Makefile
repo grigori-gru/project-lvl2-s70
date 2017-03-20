@@ -3,4 +3,4 @@ install:
 lint:
 		npm run eslint
 publish:
-		npm publish
+		npm run publish
