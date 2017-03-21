@@ -1,6 +1,7 @@
 #!/usr/bin/env node
+import program from 'commander';
 
-const program = require('commander');
+// const program = require('commander');
 
 program
   .version('0.0.1')
