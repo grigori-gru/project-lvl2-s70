@@ -6,3 +6,5 @@ lint:
 				npm run eslint
 publish:
 				npm run publish
+test:
+				npm test
