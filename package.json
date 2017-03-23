@@ -7,7 +7,7 @@
     "gendiff": "dist/bin/gendiff.js"
   },
   "scripts": {
-    "test": "jest",
+    "test": "jest --watch",
     "babel-node": "babel-node",
     "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
     "prepublish": "npm run build",
@@ -36,6 +36,7 @@
   },
   "dependencies": {
     "commander": "^2.9.0",
+    "gendiff": "^1.0.0",
     "lodash": "^4.17.4"
   }
 }
