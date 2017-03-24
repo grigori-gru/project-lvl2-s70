@@ -14,12 +14,6 @@
     "prepublish": "npm run build",
     "eslint": "eslint"
   },
-  "jest": {
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "/__tests__/__fixtures__"
-    ]
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/grigori-gru/project-lvl2-s70.git"

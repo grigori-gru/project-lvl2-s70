@@ -9,10 +9,10 @@ program
   .option('-f, --format [type]', 'Output format')
   .arguments('<first_config> <second_config>')
   .action((first, second) => {
-    if (typeof first === 'undefined' || typeof second === 'undefined') {
-      console.error('no command given!');
-      process.exit(1);
-    }
+    // if (typeof first === 'undefined' || typeof second === 'undefined') {
+    //   console.error('no command given!');
+    //   process.exit(1);
+    // }
     const before = fs
       .readFileSync(`/home/grigory/project2/src/json/${first}`, 'utf8');
     const after = fs
