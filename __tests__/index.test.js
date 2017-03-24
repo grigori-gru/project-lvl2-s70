@@ -1,10 +1,12 @@
 // import genDiff from 'gendiff';
 import fs from 'fs';
+import path from 'path';
 import getDifferense from '../src/';
 
-const fixDir = '/home/grigory/project2/__tests__/__fixtures__/';
-const before = fs.readFileSync(`${fixDir}before.json`, 'utf8');
-const after = fs.readFileSync(`${fixDir}after.json`, 'utf8');
+const before = fs
+  .readFileSync(path.join(__dirname, '__fixtures__', 'before.json'), 'utf8');
+const after = fs
+  .readFileSync(path.join(__dirname, '__fixtures__', 'after.json'), 'utf8');
 
 const result =
 `{
