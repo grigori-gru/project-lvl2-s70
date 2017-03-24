@@ -3,7 +3,7 @@ install:
 start:
 				npm run babel-node -- src/bin/gendiff.js
 lint:
-				npm run eslint -- src tests
+				npm run eslint -- src __tests__
 publish:
 				npm run publish
 test:

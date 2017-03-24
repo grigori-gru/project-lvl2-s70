@@ -1,11 +1,7 @@
 #!/usr/bin/env node
 import program from 'commander';
-import result from '..';
-import before from '../../tests/json/before.json';
-import after from '../../tests/json/after.json';
-
-// let path1;
-// let path2;
+import * as fs from 'fs';
+import getDifferense from '..';
 
 program
   .version('0.0.1')
@@ -13,20 +9,15 @@ program
   .option('-f, --format [type]', 'Output format')
   .arguments('<first_config> <second_config>')
   .action((first, second) => {
-    // path1 = `../../tests/json/${first}`;
-    // path2 = `../../tests/json/${second}`;
     if (typeof first === 'undefined' || typeof second === 'undefined') {
       console.error('no command given!');
       process.exit(1);
     }
+    const before = fs
+      .readFileSync(`/home/grigory/project2/src/json/${first}`, 'utf8');
+    const after = fs
+      .readFileSync(`/home/grigory/project2/src/json/${second}`, 'utf8');
+    console.log(getDifferense(before, after));
   });
 
 program.parse(process.argv);
-
-// Promise.all([path1, path2]
-//   .map(x => System.import(x)))
-//   .then(([first, second]) => {
-//     console.log(result(first, second));
-//   });
-
-console.log(result(before, after));
