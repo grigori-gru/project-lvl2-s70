@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 import program from 'commander';
-import * as fs from 'fs';
 import getDifferense from '..';
 
 program
@@ -9,11 +8,7 @@ program
   .option('-f, --format [type]', 'Output format')
   .arguments('<first_config> <second_config>')
   .action((first, second) => {
-    const before = fs
-      .readFileSync(`/home/grigory/project2/src/json/${first}`, 'utf8');
-    const after = fs
-      .readFileSync(`/home/grigory/project2/src/json/${second}`, 'utf8');
-    console.log(getDifferense(before, after));
+    console.log(getDifferense(first, second));
   });
 
 program.parse(process.argv);

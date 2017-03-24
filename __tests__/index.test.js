@@ -1,12 +1,5 @@
 // import genDiff from 'gendiff';
-import fs from 'fs';
-import path from 'path';
 import getDifferense from '../src/';
-
-const before = fs
-  .readFileSync(path.join(__dirname, '__fixtures__', 'before.json'), 'utf8');
-const after = fs
-  .readFileSync(path.join(__dirname, '__fixtures__', 'after.json'), 'utf8');
 
 const result =
 `{
@@ -18,5 +11,9 @@ const result =
 }`;
 
 test('JSON equal expected data', () => {
-  expect(getDifferense(before, after)).toEqual(result);
+  expect(getDifferense('before.json', 'after.json')).toEqual(result);
+});
+
+test('YAML equal expected data', () => {
+  expect(getDifferense('before.yml', 'after.yml')).toEqual(result);
 });

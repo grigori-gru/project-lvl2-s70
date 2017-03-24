@@ -1,8 +1,8 @@
 import _ from 'lodash';
+import parse from './parse';
 
 export default (first, second) => {
-  const before = JSON.parse(first);
-  const after = JSON.parse(second);
+  const [before, after] = [first, second].map(parse);
 
   const common = _.keys(before).filter(item => before[item] === after[item]);
 
