@@ -17,3 +17,7 @@ test('JSON equal expected data', () => {
 test('YAML equal expected data', () => {
   expect(getDifferense('before.yml', 'after.yml')).toEqual(result);
 });
+
+test('ini equal expected data', () => {
+  expect(getDifferense('before.yml', 'after.yml')).toEqual(result);
+});
