@@ -1,13 +1,14 @@
 import yaml from 'js-yaml';
-import * as fs from 'fs';
+import fs from 'fs';
 import path from 'path';
 import ini from 'ini';
+import _ from 'lodash';
 
 export default (item) => {
-  const itemData = fs.readFileSync((path
-      .join(__dirname, '..', '__tests__', '__fixtures__', item)), 'utf8');
-
-  const ext = item.split('.')[1];
+  console.log(path.resolve(process.cwd(), item));
+  const itemData = fs.readFileSync(
+    (path.isAbsolute(item)) ? item : (path.resolve(process.cwd(), item)), 'utf8');
+  const ext = _.last(item.split('.'));
 
   let parseItemData;
   if (ext === 'yml') parseItemData = yaml.safeLoad(itemData);

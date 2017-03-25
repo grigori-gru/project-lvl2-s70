@@ -1,4 +1,5 @@
 // import genDiff from 'gendiff';
+import path from 'path';
 import getDifferense from '../src/';
 
 const result =
@@ -11,13 +12,19 @@ const result =
 }`;
 
 test('JSON equal expected data', () => {
-  expect(getDifferense('before.json', 'after.json')).toEqual(result);
+  expect(getDifferense(path.resolve(__dirname, '__fixtures__', 'before.json'),
+                       path.resolve(__dirname, '__fixtures__', 'after.json')))
+    .toEqual(result);
 });
 
 test('YAML equal expected data', () => {
-  expect(getDifferense('before.yml', 'after.yml')).toEqual(result);
+  expect(getDifferense(path.resolve(__dirname, '__fixtures__', 'before.yml'),
+                       path.resolve(__dirname, '__fixtures__', 'after.yml')))
+    .toEqual(result);
 });
 
 test('ini equal expected data', () => {
-  expect(getDifferense('before.yml', 'after.yml')).toEqual(result);
+  expect(getDifferense(path.resolve(__dirname, '__fixtures__', 'before.ini'),
+                       path.resolve(__dirname, '__fixtures__', 'after.ini')))
+    .toEqual(result);
 });
