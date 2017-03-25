@@ -5,7 +5,6 @@ import ini from 'ini';
 import _ from 'lodash';
 
 export default (item) => {
-  console.log(path.resolve(process.cwd(), item));
   const itemData = fs.readFileSync(
     (path.isAbsolute(item)) ? item : (path.resolve(process.cwd(), item)), 'utf8');
   const ext = _.last(item.split('.'));
