@@ -2,17 +2,17 @@ import yaml from 'js-yaml';
 import fs from 'fs';
 import path from 'path';
 import ini from 'ini';
-import _ from 'lodash';
+
+const parseData = {
+  yml: item => yaml.safeLoad(item),
+  json: item => JSON.parse(item),
+  ini: item => ini.parse(item),
+};
 
 export default (item) => {
+  const ext = path.extname(item).slice(1);
   const itemData = fs.readFileSync(
     (path.isAbsolute(item)) ? item : (path.resolve(process.cwd(), item)), 'utf8');
-  const ext = _.last(item.split('.'));
 
-  let parseItemData;
-  if (ext === 'yml') parseItemData = yaml.safeLoad(itemData);
-  if (ext === 'json') parseItemData = JSON.parse(itemData);
-  if (ext === 'ini') parseItemData = ini.parse(itemData);
-
-  return parseItemData;
+  return parseData[ext](itemData);
 };
