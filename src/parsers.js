@@ -1,5 +1,4 @@
 import yaml from 'js-yaml';
-import fs from 'fs';
 import path from 'path';
 import ini from 'ini';
 
@@ -9,10 +8,6 @@ const parseData = {
   ini: item => ini.parse(item),
 };
 
-const getData = item => fs.readFileSync(
-  (path.isAbsolute(item)) ? item : (path.resolve(process.cwd(), item)), 'utf8');
-
 const getExt = item => path.extname(item).slice(1);
 
-export default item =>
-  parseData[getExt(item)](getData(item));
+export default (fileName, data) => parseData[getExt(fileName)](data);
