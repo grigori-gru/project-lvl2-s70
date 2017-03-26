@@ -1,5 +1,4 @@
 import yaml from 'js-yaml';
-import path from 'path';
 import ini from 'ini';
 
 const parseData = {
@@ -8,6 +7,4 @@ const parseData = {
   ini: item => ini.parse(item),
 };
 
-const getExt = item => path.extname(item).slice(1);
-
-export default (fileName, data) => parseData[getExt(fileName)](data);
+export default (fileExt, data) => parseData[fileExt](data);

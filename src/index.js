@@ -1,6 +1,9 @@
 import _ from 'lodash';
+import path from 'path';
 import parse from './parsers';
 import getData from './reader';
+
+const getExt = item => path.extname(item).slice(1);
 
 const getCommon = (file1, file2) => _.keys(file1).reduce((acc, key) => {
   const newAcc = {};
@@ -35,8 +38,8 @@ const iter = (file1, file2) => {
 };
 
 export default (firstName, secondName) => {
-  const file1 = parse(firstName, getData(firstName));
-  const file2 = parse(secondName, getData(secondName));
+  const file1 = parse(getExt(firstName), getData(firstName));
+  const file2 = parse(getExt(secondName), getData(secondName));
   const result = iter(file1, file2);
 
   return `{\n${result}\n}`;
